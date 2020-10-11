@@ -1,0 +1,14 @@
+{% extends "temp_main.html" %}
+{% block title %}Создать компанию{% endblock %}
+
+{% block main %}
+
+<h1> Панель управления </h1>
+<p><a href="{% url "create_progect" %}">Добавить проект</a></p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

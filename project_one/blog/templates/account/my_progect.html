@@ -1,0 +1,59 @@
+{% extends "temp_main.html" %}
+{% block title %}Панель управления{% endblock %}
+
+{% block main %}
+
+<h1> Мой проект </h1>
+<div class="row">
+    {% if company_info_name %}
+        {% for i in company_info_name %}
+            <div class="col-lg-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Моя компания</h6>
+                    </div>
+                    <div class="card-body">
+                        <p>Имя компании:</p>
+                        <p>{{ i.company_name }}</p>
+                        <p>ИНН компании:</p>
+                        <p>{{ i.company_inn }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p> Вы еще не создали ни одной компани :( что бы создать компанию, перейдите пожалуйста по ссылке: <a href="{% url "create_company" %}">Создать компанию</a> </p>
+    {% endif %}
+    {% if affiliater_info_name %}
+        {% for p in affiliater_info_name %}
+                    <div class="col-lg-4">
+                         <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Мой филиал</h6>
+                            </div>
+                            <div class="card-body">
+                                <p>Имя филиала:</p>
+                                <p>{{ p.affiliate_name }}</p>
+                                <p>Адрес филиала:</p>
+                                <p>{{ p.affiliate_adres }}</p>
+                                <p>Телефон филиала:</p>
+                                <p>{{ p.tel_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+            {% endif %}
+    {% if company_info_name %}
+                <div class="col-lg-2">
+                         <div class="card-body text-center">
+                             <a href="{% url "create_affiliater" %}">
+                             <i class="fa fa-plus-square-o fa-6x" aria-hidden="true"></i><br>
+                             Добавить филиал
+                             </a>
+                         </div>
+                </div>
+        {% else %}
+    {% endif %}
+</div>
+{% endblock %}

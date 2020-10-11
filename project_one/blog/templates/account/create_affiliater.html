@@ -1,0 +1,14 @@
+{% extends "temp_main.html" %}
+{% block title %}Создать компанию{% endblock %}
+
+{% block main %}
+
+<h1> Создание филиала </h1>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

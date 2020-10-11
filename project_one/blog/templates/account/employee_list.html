@@ -1,0 +1,73 @@
+{% extends "temp_main.html" %}
+{% block title %}Панель управления{% endblock %}
+
+{% block main %}
+
+<h1> Список сотрудников </h1>
+<div class="row">
+    {% if employee_lists %}
+        <div class="col-lg-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Список сотрудников</h6>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Фамилия</th>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Отчество</th>
+                             </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in employee_lists %}
+                                <tr>
+                                  <td>{{ i.employee_surname }}</td>
+                                  <td>{{ i.employee_name }}</td>
+                                  <td>{{ i.employee_patronymic }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        {% else %}
+            <p> Вы еще не создали ни одной компани :( что бы создать компанию, перейдите пожалуйста по ссылке: <a href="{% url "create_company" %}">Создать компанию</a> </p>
+    {% endif %}
+                    </div>
+                </div>
+        </div>
+</div>
+{% endblock %}
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>

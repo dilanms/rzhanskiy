@@ -1,0 +1,44 @@
+<!-- templates/account/temp.html -->
+{% load static %}
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+			{% if request.AnonymousUser.is_authenticated %}
+				<ul class="menu">
+					<li {% if section == "dashboard" %} class="selected" {% endif %}>
+						<a href='{% url "dashboard" %}'> My dashboard </a>
+					</li>
+				</ul>
+			{% else %}
+
+			{% endif %}
+			</div>
+			<div class="col">
+				<span class="user">
+			{% if user.is_authenticated %}
+				Hello {{ user.username }}
+				<a href=" {% url "logout" %}">Выйти</a>
+			{% else %}
+				<a href=" {% url "login" %}">Войти</a>
+			{% endif %}
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center">
+		{% block main %} {% endblock %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
